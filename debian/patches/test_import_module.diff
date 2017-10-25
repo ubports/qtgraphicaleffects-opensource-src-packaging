@@ -1,0 +1,32 @@
+Description: import module directly because we use custom import path
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: not-needed
+Last-Update: 2016-07-12
+
+--- a/tests/auto/tst_qtgraphicaleffects.cpp
++++ b/tests/auto/tst_qtgraphicaleffects.cpp
+@@ -86,23 +86,7 @@
+ 
+ void tst_qtgraphicaleffects::initTestCase()
+ {
+-    QString import;
+-
+-    // Allow the test to work whether or not the module is yet installed.
+-    if (QFile::exists(QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath) + "/QtGraphicalEffects")) {
+-        // Module is installed - import it the nice way
+-        import = "QtGraphicalEffects";
+-    }
+-    else {
+-        // Module is not installed - import it from the source tree, by URI
+-        QString qmldir = QFINDTESTDATA("../../src/effects/qmldir");
+-        QVERIFY2(QFile::exists(qmldir), qPrintable(qmldir));
+-
+-        QUrl url = QUrl::fromLocalFile(QFileInfo(qmldir).canonicalPath());
+-        import = "\"" + url.toString() + "\"";
+-    }
+-
+-    importSelf = QString("import %1 1.0\n").arg(import);
++    importSelf = QString("import QtGraphicalEffects 1.0\n");
+ }
+ 
+ 

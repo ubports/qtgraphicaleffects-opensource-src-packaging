@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+export CFLAGS := $(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
+export CXXFLAGS := $(shell dpkg-buildflags --get CXXFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
+export LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
+export QT_SELECT := qt5
+
+%:
+	dh $@ --parallel
+
+override_dh_auto_clean:
+	rm -rfv $(CURDIR)/test_root
+
+override_dh_auto_configure:
+	qmake QT_BUILD_PARTS+=tests
+
+override_dh_auto_build-indep:
+	dh_auto_build -Smakefile -- docs
+
+override_dh_auto_test-arch:
+	$(MAKE) install INSTALL_ROOT=$(CURDIR)/test_root
+	dh_auto_test -- QT_QPA_PLATFORM=minimal QML2_IMPORT_PATH=$(CURDIR)/test_root/usr/lib/$(DEB_HOST_MULTIARCH)/qt5/qml
+
+override_dh_auto_test-indep:
+
+override_dh_auto_install-indep:
+	make INSTALL_ROOT=$(CURDIR)/debian/tmp install_docs
+
+override_dh_install:
+	dh_install --fail-missing
