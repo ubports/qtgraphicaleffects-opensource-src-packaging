@@ -11,7 +11,7 @@ export LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 export QT_SELECT := qt5
 
 %:
-	dh $@ --with qmlcdeps
+	dh $@ --parallel
 
 override_dh_auto_clean:
 	rm -rfv $(CURDIR)/test_root
