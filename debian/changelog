@@ -1,4 +1,32 @@
-qtgraphicaleffects-opensource-src (5.9.1+ubports) xenial; urgency=medium
+qtgraphicaleffects-opensource-src (5.9.3+ubports) xenial; urgency=medium
+
+  * Import 5.9.3
+
+ -- Dan Chapman <dan@ubports.com>  Fri, 23 Feb 2018 12:30:45 +0000
+
+qtgraphicaleffects-opensource-src (5.9.3-0ubuntu1) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sat, 09 Dec 2017 16:22:06 -0600
+
+qtgraphicaleffects-opensource-src (5.9.2-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 26 Oct 2017 16:38:10 +0300
+
+qtgraphicaleffects-opensource-src (5.9.2-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Bump Qt build-dependencies to 5.9.2.
+  * Call dh_qmlcdeps during build to get proper dependencies.
+  * Use debhelper compat level 10 and dh_missing.
+  * Bump Standards-Version to 4.1.1, stop using deprecated Priority: extra.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 15 Oct 2017 23:04:16 +0300
+
+qtgraphicaleffects-opensource-src (5.9.1-2) unstable; urgency=medium
 
   * Upload to unstable.
 

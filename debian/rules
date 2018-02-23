@@ -11,7 +11,7 @@ export LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 export QT_SELECT := qt5
 
 %:
-	dh $@ --parallel
+	dh $@ --with qmlcdeps
 
 override_dh_auto_clean:
 	rm -rfv $(CURDIR)/test_root
@@ -31,5 +31,5 @@ override_dh_auto_test-indep:
 override_dh_auto_install-indep:
 	make INSTALL_ROOT=$(CURDIR)/debian/tmp install_docs
 
-override_dh_install:
-	dh_install --fail-missing
+override_dh_missing:
+	dh_missing --fail-missing
