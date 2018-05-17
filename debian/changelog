@@ -1,8 +1,14 @@
-qtgraphicaleffects-opensource-src (5.9.3+ubports) xenial; urgency=medium
+qtgraphicaleffects-opensource-src (5.9.5-0ubports1) xenial; urgency=medium
 
-  * Import 5.9.3
+  * New upstream release.
 
- -- Dan Chapman <dan@ubports.com>  Fri, 23 Feb 2018 12:30:45 +0000
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sat, 14 Apr 2018 14:17:53 -0500
+
+qtgraphicaleffects-opensource-src (5.9.4-0ubuntu1) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sun, 25 Feb 2018 19:20:06 -0600
 
 qtgraphicaleffects-opensource-src (5.9.3-0ubuntu1) bionic; urgency=medium
 
